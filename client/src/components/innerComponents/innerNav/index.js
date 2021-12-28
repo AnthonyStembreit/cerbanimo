@@ -2,12 +2,21 @@ import React from 'react';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from "react-router-bootstrap";
 import './innerNav.css';
-
-
+import { useDispatch, useSelector } from 'react-redux';
+import { LOGOUT } from '../../../utils/actions';
+import axios from 'axios';
 
 
 export default function InnerNav() {
-
+  const dispatch = useDispatch();
+  const state = useSelector(state => state);
+  console.log(state)
+  const logOut = () => {
+    axios.get('/api/auth/logout').then(res => {
+      console.log(res)
+      dispatch({ type: LOGOUT });
+    })
+  }
   return (
     <Navbar id="innerNav" collapseOnSelect expand="lg" >
       <LinkContainer to="/dashboard">
@@ -45,9 +54,8 @@ export default function InnerNav() {
             <Nav.Link>Create</Nav.Link>
           </LinkContainer>
 
-          <LinkContainer to="/log-out">
-            <Nav.Link>Log Out</Nav.Link>
-          </LinkContainer>
+
+          <Nav.Link onClick={logOut}>Log Out</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
