@@ -5,17 +5,28 @@ import {
 } from "./actions";
 
 const initialState = {
-    auth: false
+    auth: false,
+    user: {}
 }
 
 export const reducers = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN:
-        return {
-            ...state,
-            auth: true
-        }
-       
+            if (action.userData[0]) {
+                return {
+                    ...state,
+                    auth: true,
+                    user: action.userData[0]
+                }
+            } else {
+
+                return {
+                    ...state,
+                    auth: true,
+                    user: action.userData
+                }
+            }
+
         case LOGOUT:
             return {
                 ...state,

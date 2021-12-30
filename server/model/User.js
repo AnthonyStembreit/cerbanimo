@@ -26,7 +26,60 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [4]
+        len: [8]
+      }
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    img_url: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        max: [500]
+      }
+    },
+    link_name_one:{
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        max: [15]
+      }
+    },
+    link_url_one:{
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        max : [500]
+      }
+    },
+    link_name_two:{
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        max: [15]
+      }
+    },
+    link_url_two:{
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        max: [500]
+      }
+    },
+    link_name_three:{
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        max: [15]
+      }
+    },
+    link_url_three:{
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        max: [500]
       }
     }
   },
@@ -44,7 +97,7 @@ User.init(
       }
     },
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: 'User'

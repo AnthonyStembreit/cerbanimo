@@ -1,22 +1,11 @@
 import { useState, useEffect, React } from 'react';
 import { Col, Row, Container, Carousel } from 'react-bootstrap';
-import CommunityCard from '../../../components/innerComponents/communityCard'
+import CommunityCard from '../../../components/innerComponents/communityCard';
+import { useSelector} from 'react-redux';
 import './profile.css';
 export default function PublicProfile() {
+    const state = useSelector(state => state);
     const props = {
-        name: "AndyDragon",
-        description: "Minim ea et est adipisicing officia qui cupidatat deserunt commodo. Magna mollit officia est duis et commodo amet enim nostrud voluptate dolor ut dolore nisi. Ut veniam sit ipsum elit id. Fugiat mollit ipsum occaecat magna anim reprehenderit magna ut eu consequat Lorem sunt nisi. Sint quis quis et amet eiusmod tempor anim.",
-        img: "https://avatars2.githubusercontent.com/u/64037800?s=400&u=53ec1db932c81fd5b8b01fe87dfa7f3fa53161d4&v=4",
-        links: [
-            {
-                url: "https://github.com/AnthonyStembreit",
-                name: "Github"
-            },
-            {
-                url: "https://www.linkedin.com/in/anthony-stembreit/",
-                name: "LinkedIn"
-            }
-        ],
         skills: [
             {
                 name: "Skill",
@@ -82,11 +71,11 @@ export default function PublicProfile() {
 
         ]
     }
-    let links = props.links.map(link => {
-        return (
-            <li><a href={link.url}>{link.name}</a></li>
-        )
-    })
+    // let links = props.links.map(link => {
+    //     return (
+    //         <li><a href={link.url}>{link.name}</a></li>
+    //     )
+    // })
     let communities = props.communities.map(community => {
         return (
             <Col>
@@ -127,24 +116,30 @@ useEffect(()=>{
     setRows(rows)
     console.log(stateRows);
 }, [])
-
+console.log(state)
+console.log(state.user)
+const {img_url, description, username, link_name_one, link_url_one,link_name_two, link_url_two, link_name_three, link_url_three} = state.user
     return (
         <Container id="public-profile">
             <Row id="info-row" className="outer-rows">
           
                 <Col className="top-row-col">
-                    <Row id="img-row"><img src={props.img} alt="profile picture"></img></Row>
-                    <Row><ul>{links}</ul></Row>
+                    <Row id="img-row"><img src={img_url} alt="profile picture"></img></Row>
+                    <Row><ul>
+                    <li><a href={link_url_one}>{link_name_one}</a></li>
+                    <li><a href={link_url_two}>{link_name_two}</a></li>
+                    <li><a href={link_url_three}>{link_name_three}</a></li>
+                        </ul></Row>
                 </Col>
                 <Col className="top-row-col">
-                    <Row><h2>{props.name}</h2></Row>
+                    <Row><h2>{username}</h2></Row>
                     <Row id="skill-box" > {skills}</Row>
                 </Col>
                
             </Row>
             <Row className="outer-rows">
         
-                <Col lg={10}>{props.description}</Col>
+                <Col lg={10}>{description}</Col>
 
             </Row>
             <Row className="outer-rows">

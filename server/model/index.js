@@ -1,11 +1,15 @@
 const User = require('./User');
+const Skill = require('./Skill')
 // const Project = require('./Project');
 // const Community = require('./Community');
 // const Category = require("./Category");
 // const Task = require("./Task");
 // const Node = require("./Node");
 
-
+Skill.belongsTo(User, {
+    foreignKey:'userId',
+    onDelete: 'CASCADE'
+})
 //User belongs to many Community
 //a user can have more than one community
 
@@ -49,11 +53,13 @@ const User = require('./User');
 //more than one community can have the same type of work (category)
 
 //community has many Category 
-//a community can fall into many categories 
+//a community can fall into many categories
+
 
 
 module.exports = {
     User,
+    Skill
     // Project,
     // Community
 };

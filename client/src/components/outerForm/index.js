@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Button, Container, Col, Row } from 'react-bootstrap';
 import './outerForm.css';
 import { useDispatch } from 'react-redux';
-import { LOGIN} from '../../utils/actions';
+import { LOGIN } from '../../utils/actions';
 import axios from 'axios';
 
 export default function OuterFrom(props) {
@@ -16,15 +16,17 @@ export default function OuterFrom(props) {
         if (e.target.innerText === "Submit") {
             axios.post('/api/auth/login', creds).then(res => {
                 console.log(res)
+                const userData = res.data
                 if (res.status === 200) {
-                    dispatch({ type: LOGIN });
+                    dispatch({ type: LOGIN, userData });
                 }
             })
         } else {
             axios.post('/api/user', creds).then(res => {
                 console.log(res)
+                const userData = res.data
                 if (res.status === 200) {
-                    dispatch({ type: LOGIN });
+                    dispatch({ type: LOGIN, userData});
                 }
             })
         }

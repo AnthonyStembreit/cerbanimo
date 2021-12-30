@@ -5,7 +5,7 @@ router.post('/login', passport.authenticate("local"), async (req, res) => {
     res.json(req.user)
 })
 router.get('/check', checkAuth, (req, res) => {
-    res.json({ auth: true })
+    res.json(req.user)
 })
 router.get("/logout", function (req, res) {
     req.logout();

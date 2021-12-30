@@ -14,8 +14,9 @@ export default function App() {
     useEffect(() => {
         axios.get('/api/auth/check').then(res => {
             console.log(res.data)
-            if (res.data.auth === true) {
-                dispatch({ type: LOGIN });
+            const userData = res.data
+            if (typeof userData === "object") {
+                dispatch({ type: LOGIN, userData });
             }
         })
     }, [])
@@ -28,7 +29,7 @@ export default function App() {
             window.location.replace("/#/")
         }
         return (
-            <InnerApp />
+            <InnerApp  />
         )
     } else {
         if (window.location !== "/#/") {
