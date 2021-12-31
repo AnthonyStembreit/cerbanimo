@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { User } = require("../model");
-var passport = require("../config/passport.js");
+const checkAuth = require('../config/auth');
 
 router.get("/", async (req, res) => {
     try {
@@ -37,7 +37,7 @@ router.post("/", async (req, res) => {
     }
 })
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", checkAuth, async (req, res) => {
     try {
       let updatedUser = await  User.update(req.body, {
             where:{id: req.params.id} 
@@ -48,7 +48,7 @@ router.put("/:id", async (req, res) => {
     }
 })
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", checkAuth, async (req, res) => {
     try {
         let deleted = await User.destroy({
             where:{id: req.params.id}
