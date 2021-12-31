@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
-import Paragraph from '../../../components/paragraph';
+import Paragraph from '../../../components/outerComponents/paragraph';
 
 export default function Description(props) {
     return (

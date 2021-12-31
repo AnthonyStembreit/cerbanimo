@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Button, Container, Col, Row } from 'react-bootstrap';
 import './outerForm.css';
 import { useDispatch } from 'react-redux';
-import { LOGIN } from '../../utils/actions';
+import { LOGIN } from '../../../utils/actions';
 import axios from 'axios';
 
 export default function OuterFrom(props) {

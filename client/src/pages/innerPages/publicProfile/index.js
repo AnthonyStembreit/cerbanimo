@@ -22,28 +22,6 @@ export default function PublicProfile() {
         })
     }, [])
     const props = {
-        skills: [
-            {
-                name: "Skill",
-                currentLevel: 4,
-                subSkills: [
-                    {
-                        name: "sub Skill",
-                        currentLevel: 2,
-                    }
-                ]
-            },
-            {
-                name: "Skill two ",
-                currentLevel: 3,
-                subSkills: [
-                    {
-                        name: "sub Skill",
-                        currentLevel: 4,
-                    }
-                ]
-            }
-        ],
         communities: [
             {
                 name: "stars",
@@ -87,11 +65,6 @@ export default function PublicProfile() {
 
         ]
     }
-    // let links = props.links.map(link => {
-    //     return (
-    //         <li><a href={link.url}>{link.name}</a></li>
-    //     )
-    // })
     let communities = props.communities.map(community => {
         return (
             <Col>
@@ -105,14 +78,6 @@ export default function PublicProfile() {
 
         )
     });
-    // let skills = props.skills.map(skill => {
-    //     return (
-    //         <div className='flex-skill'>
-    //             <p>{skill.name}</p>
-    //             <p>{skill.currentLevel}</p>
-    //         </div>
-    //     )
-    // })
     const [stateRows, setRows] = useState([communities])
     useEffect(() => {
         console.log(communities.length);
@@ -130,10 +95,7 @@ export default function PublicProfile() {
             )
         };
         setRows(rows)
-        console.log(stateRows);
     }, [])
-    console.log(state)
-    console.log(state.user)
     const { img_url, description, username, link_name_one, link_url_one, link_name_two, link_url_two, link_name_three, link_url_three } = state.user
     return (
         <Container id="public-profile">

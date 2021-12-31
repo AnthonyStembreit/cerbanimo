@@ -1,6 +1,6 @@
 import React from 'react';
 import teamMembers from './teamMembers.json';
-import TeamMember from '../../../components/teamMemeber';
+import TeamMember from '../../../components/outerComponents/teamMemeber';
 import './team.css';
 import { Row, Col } from 'react-bootstrap';
 

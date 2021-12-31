@@ -1,6 +1,5 @@
 import React from 'react';
 import { HashRouter, Route } from 'react-router-dom';
-import Dashboard from './pages/innerPages/dashboard';
 import MyProjects from './pages/innerPages/myProjects';
 import MyCreate from './pages/innerPages/myCreate';
 import MyPersonal from './pages/innerPages/myPersonal';
@@ -13,12 +12,7 @@ function InnerApp() {
         <HashRouter>
             <InnerNav/>
             <div className="innerApp">
-                <Route exact path="/" component={Dashboard} />
-                <Route path="/dashboard" render={() => {
-                    return (
-                        <Dashboard/>
-                    )
-                }} />
+                <Route exact path="/" component={PublicProfile} />
                 <Route path="/profile" render={() => {
                     return (
                         <PublicProfile/>
@@ -44,11 +38,6 @@ function InnerApp() {
                         <TaskMarket/>
                     )
                 }} />
-                 {/* <Route path="/:username" render={() => {
-                    return (
-                        <PublicProfile/>
-                    )
-                }} /> */}
             </div>
         </HashRouter>
     )
