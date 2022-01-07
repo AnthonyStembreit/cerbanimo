@@ -54,7 +54,7 @@ export default function MyPersonal() {
                         <Row><p id="currentProfileEmail">{username}</p> <i onClick={() => displayEdit("currentProfileEmail", "editProfileEmail")} class="fas fa-pencil-alt"></i>
                             <Form.Group id="editProfileEmail" style={{ display: "none" }}>
                                 <Form.Label>Email</Form.Label>
-                                <Form.Control as="textarea" onChange={(e) => newEmail = e.target.value}>{username}</Form.Control>
+                                <Form.Control as="textarea" onChange={(e) => newUsername = e.target.value}>{username}</Form.Control>
                                 <Button type="button" onClick={() => { setProfileObj({ ...profileObj, username: newUsername }); hideEdit("currentProfileEmail", "editProfileEmail") }}>Save</Button>
                             </Form.Group>
                         </Row>
