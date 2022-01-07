@@ -27,9 +27,6 @@ export default function InnerNav() {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="links">
-          <LinkContainer to="/dashboard">
-            <Nav.Link>Dashboard</Nav.Link>
-          </LinkContainer>
 
           <LinkContainer to="/task-market">
             <Nav.Link>Task-Market</Nav.Link>

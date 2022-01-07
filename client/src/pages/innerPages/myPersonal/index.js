@@ -1,31 +1,28 @@
 import { React, useState, useEffect } from 'react';
 import { Col, Row, Container, Form, Button } from 'react-bootstrap';
-
+import { useSelector } from 'react-redux';
+import axios from 'axios';
 export default function MyPersonal() {
-    let props = {
-        name: "AndyDragon",
-        email: "dragonsetmbrite@gmail.com",
-        description: "Minim ea et est adipisicing officia qui cupidatat deserunt commodo. Magna mollit officia est duis et commodo amet enim nostrud voluptate dolor ut dolore nisi. Ut veniam sit ipsum elit id. Fugiat mollit ipsum occaecat magna anim reprehenderit magna ut eu consequat Lorem sunt nisi. Sint quis quis et amet eiusmod tempor anim.",
-        img: "https://avatars2.githubusercontent.com/u/64037800?s=400&u=53ec1db932c81fd5b8b01fe87dfa7f3fa53161d4&v=4",
-        links: [
-            {
-                url: "https://github.com/AnthonyStembreit",
-                name: "Github"
-            },
-            {
-                url: "https://www.linkedin.com/in/anthony-stembreit/",
-                name: "LinkedIn"
-            }
-        ]
-    }
-    let [profileObj, setProfileObj] = useState(props)
-    let links = profileObj.links.map(link => {
-        return (
-            <li><a href={link.url}>{link.name}</a></li>
-        )
-    })
-    let newDescription = profileObj.description
-    let newEmail = profileObj.email
+    const state = useSelector(state => state);
+    const { img_url, description, username, link_name_one, link_url_one, link_name_two, link_url_two, link_name_three, link_url_three } = state.user
+    const [stateSkills, setSkills] = useState([]);
+    const [profileObj, setProfileObj] = useState(state.user);
+    useEffect(() => {
+        axios.get(`/api/skill/${state.user.id}`).then((res) => {
+            console.log(res)
+            let skills = res.data.map(skill => {
+                return (
+                    <div value={skill.id} className='flex-skill'>
+                        <p>{skill.name}</p>
+                        <p>{skill.currentLevel}</p>
+                    </div>
+                )
+            })
+            setSkills(skills)
+        })
+    }, [])
+    let newDescription = description
+    let newUsername = username
     function displayEdit(displayContainer, editContainer) {
         document.getElementById(displayContainer).style.display = "none";
         document.getElementById(editContainer).style.display = "block";
@@ -39,18 +36,26 @@ export default function MyPersonal() {
             <Container>
                 <Row>
                     <Col>
-                        <Row><img src={profileObj.img} alt="profile image"></img>    <i class="fas fa-pencil-alt"></i></Row>
-                        <Row><ul id="currentProfileLinks">{links}</ul>   <i class="fas fa-pencil-alt"></i></Row>
+                        <Row><img src={img_url} alt="profile image"></img>    <i class="fas fa-pencil-alt"></i></Row>
+                        <Row>
+                            <ul id="currentProfileLinks">
+                                <li><a href={link_url_one}>{link_name_one}</a></li>
+                                <li><a href={link_url_two}>{link_name_two}</a></li>
+                                <li><a href={link_url_three}>{link_name_three}</a></li>
+                            </ul>
+
+                            <i class="fas fa-pencil-alt"></i>
+                            </Row>
                     </Col>
                     <Col>
                         <Row>
-                            <h2>{profileObj.name}</h2>  
+                            <h2>{username}</h2>
                         </Row>
-                        <Row><p id="currentProfileEmail">{profileObj.email}</p> <i onClick={() => displayEdit("currentProfileEmail", "editProfileEmail")}class="fas fa-pencil-alt"></i>
+                        <Row><p id="currentProfileEmail">{username}</p> <i onClick={() => displayEdit("currentProfileEmail", "editProfileEmail")} class="fas fa-pencil-alt"></i>
                             <Form.Group id="editProfileEmail" style={{ display: "none" }}>
                                 <Form.Label>Email</Form.Label>
-                                <Form.Control as="textarea" onChange={ (e) => newEmail = e.target.value }>{profileObj.email}</Form.Control>
-                                <Button type="button" onClick={() => {setProfileObj({ ...profileObj, email: newEmail }); hideEdit("currentProfileEmail", "editProfileEmail") }}>Save</Button>
+                                <Form.Control as="textarea" onChange={(e) => newEmail = e.target.value}>{username}</Form.Control>
+                                <Button type="button" onClick={() => { setProfileObj({ ...profileObj, username: newUsername }); hideEdit("currentProfileEmail", "editProfileEmail") }}>Save</Button>
                             </Form.Group>
                         </Row>
                         <Row><p>**********</p>  <a href="#">reset passoword</a></Row>
@@ -58,12 +63,12 @@ export default function MyPersonal() {
                 </Row>
                 <Row>
                     <Col>
-                        <div id="currentProfileDescription">{profileObj.description}</div>
+                        <div id="currentProfileDescription">{description}</div>
 
                         <Form.Group id="editProfileDescription" style={{ display: "none" }} >
                             <Form.Label>Description</Form.Label>
                             <Form.Control onChange={(e) => newDescription = e.target.value} as="textarea" rows={3}>
-                                {profileObj.description}
+                                {description}
                             </Form.Control>
                             <Button type="button" onClick={() => { setProfileObj({ ...profileObj, description: newDescription }); console.log(profileObj); hideEdit("currentProfileDescription", "editProfileDescription") }}>Save</Button>
                         </Form.Group>
@@ -71,7 +76,7 @@ export default function MyPersonal() {
                     </Col>
                     <i onClick={() => displayEdit("currentProfileDescription", "editProfileDescription")} class="fas fa-pencil-alt"></i>
                 </Row>
-            </Container>
-        </div>
+            </Container >
+        </div >
     )
 }

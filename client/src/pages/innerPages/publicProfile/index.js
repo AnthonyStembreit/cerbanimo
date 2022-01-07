@@ -10,7 +10,7 @@ export default function PublicProfile() {
     useEffect(() => {
         axios.get(`/api/skill/${state.user.id}`).then((res) => {
             console.log(res)
-        let skills = res.data.map(skill => {
+            let skills = res.data.map(skill => {
                 return (
                     <div value={skill.id} className='flex-skill'>
                         <p>{skill.name}</p>
@@ -103,11 +103,13 @@ export default function PublicProfile() {
 
                 <Col className="top-row-col">
                     <Row id="img-row"><img src={img_url} alt="profile picture"></img></Row>
-                    <Row><ul>
-                        <li><a href={link_url_one}>{link_name_one}</a></li>
-                        <li><a href={link_url_two}>{link_name_two}</a></li>
-                        <li><a href={link_url_three}>{link_name_three}</a></li>
-                    </ul></Row>
+                    <Row>
+                        <ul>
+                            <li><a href={link_url_one}>{link_name_one}</a></li>
+                            <li><a href={link_url_two}>{link_name_two}</a></li>
+                            <li><a href={link_url_three}>{link_name_three}</a></li>
+                        </ul>
+                    </Row>
                 </Col>
                 <Col className="top-row-col">
                     <Row><h2>{username}</h2></Row>
