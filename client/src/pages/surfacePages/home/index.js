@@ -29,7 +29,7 @@ export default function Home() {
 
                 </Col>
                 <Col sm={12} lg={5}>
-                    <img id="laptopImg" src="https://cerbanimo.quinixdesign.com/v2/wp-content/uploads/2020/11/undraw_working_remotely_jh40-4-1-1024x570.png" alt="drawn women with laptop and coffee"></img>
+                    <img id="laptopImg" src="./images/WorkRemoteImg.png" alt="drawn women with laptop and coffee"></img>
                 </Col>
                 <Col lg={1}></Col>
             </Row>

@@ -2,7 +2,11 @@ const router = require('express').Router();
 const { User } = require("../model");
 
 router.get("/", async (req,res)=>{
+    try{
 
+    }catch(err){
+        if(err){ throw err}
+    }
 })
 
 router.get("/:id", async (req,res)=>{

@@ -21,7 +21,7 @@ export default function InnerNav() {
     <Navbar id="innerNav" collapseOnSelect expand="lg" >
       <LinkContainer to="/dashboard">
         <Navbar.Brand id="brand">
-          <img src="https://cerbanimo.quinixdesign.com/v2/wp-content/uploads/2020/11/Cerbanimo-Logo-V001-2.png" alt="Cerbanimo Logo"></img>
+          <img src="./images/CerbanimoLogoBlack.png" alt="Cerbanimo Logo"></img>
         </Navbar.Brand>
       </LinkContainer>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />

@@ -1,5 +1,16 @@
 #team{
     text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-left:40px;
+    margin-right:40px;
     /* justifiy content center 
     look up how to acheive could save a lot of media queries */
+}
+.team-mate{
+    display: flex;
+    justify-content: center;
+    margin-bottom:10px;
+    margin-top:10px;
 }

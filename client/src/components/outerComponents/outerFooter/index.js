@@ -7,7 +7,7 @@ export default function OuterFooter() {
     return (
         <Navbar sticky="bottom" id="outsideFooter">
             <Row id="tableFooter">
-                <Col lg={3} sm={12}><img id="footerLogo" src="https://cerbanimo.quinixdesign.com/v2/wp-content/uploads/2020/11/Cerbanimo-Logo-V001-5.png" alt="Cerbanimo logo"></img> <br></br> <p>Copyright © 2020 Cerbanimo, LLC.</p></Col>
+                <Col lg={3} sm={12}><img id="footerLogo" src="./images/CerbanimoLogoWhite.png" alt="Cerbanimo logo"></img> <br></br> <p>Copyright © 2020 Cerbanimo, LLC.</p></Col>
                     <Col >
                         <p className="footerTitle">Platform</p>
                         <p><Link to="/whatFor">What's It For?</Link></p>

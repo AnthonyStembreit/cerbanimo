@@ -6,7 +6,7 @@ import { Row, Col } from 'react-bootstrap';
 
 export default function Team() {
     let teamMates = teamMembers.map(member => {
-        return <Col lg={6}>
+        return(
             <TeamMember
                 id={member.id}
                 name={member.name}
@@ -14,11 +14,11 @@ export default function Team() {
                 skills={member.skills}
                 title={member.title}
                 paragraph={member.paragraph}
-            /> </Col>})
+            /> )})
     
         return (
-            <Row id="team">
+            <div id="team">
                 {teamMates}
-            </Row>
+            </div>
         )
     }

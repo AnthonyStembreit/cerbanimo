@@ -18,7 +18,7 @@ export default function TeamMember(props) {
 
                 <Card.Header className="names">{props.name} <br></br> {props.title}</Card.Header>
                 <Card.Body>
-                    <Paragraph paragraph={props.paragraph} />
+                  {props.paragraph} 
                 </Card.Body>
                 {/* <h4>Works in:</h4>
            <ul className="skillList">
